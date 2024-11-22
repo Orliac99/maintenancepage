@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cello Event's - Maintenance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .left-section {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .left-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .left-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0;
+            color: #555;
+        }
+
+        .right-section {
+            flex: 1;
+            background: #ffccd5;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .form-group button {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background: #e05555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Section gauche -->
+        <div class="left-section">
+            <img src="#" alt="Maintenance Image">
+            <p>
+                Nous effectuons des travaux de maintenance pour améliorer votre expérience.  
+                En attendant, vous pouvez nous laisser un message via le formulaire ci-dessous.  
+                Merci pour votre patience !
+            </p>
+        </div>
+        <!-- Section droite -->
+        <div class="right-section">
+            <h2>Contactez-nous</h2>
+            <form method="POST" action="{% url 'maintenancepage' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input type="text" name="name" id="name" placeholder="Votre nom">
+                </div>
+                <div class="form-group">
+                    <label for="email">Votre mail</label>
+                    <input type="email" name="email" id="email" placeholder="Votre adresse mail">
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre message</label>
+                    <textarea id="message" name="message" placeholder="Votre message ici..."></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
